@@ -1,0 +1,11 @@
+README:
+
+One of the things I tried to focus on when I coded for 3 cards instead of 2 cards is scalability. I wanted to write good code that would make it easy to support any number of cards to match. So, if there were 4 cards or more, I would need to change very little code.
+
+I decided to add the description of each flip to the cardMatchingGame. I did this because the result of the flip is tied directly to the logical operations that took place in the flip. It also let me store the history of the flips in an array within the game. That way, I didn't clutter my controller. The less clutter a controller has, the easier it is to keep the controller generic for a given model or view. All I needed to do was call methods on the game object for the current or past flip descriptions for both the history slider and current description. 
+
+One of the more difficult parts of the project was creating a variety of string structures for each kind of flip result. I created 2 private helper functions (getMismatchDescription and getMatchDescription) to abstract the string formation away from the logic of looking for matches. This will make it easier in the long run to quickly change the string structure for varying card mismatch sizes (like 4-card match) and easier to internationalize a string because it it kept in one place. Another benefit of creating helper functions is that it'll make it easier to write unit tests. 
+
+The interesting thing about Matchismo as opposed to other matching games, is that it allows you to have any number of cards face up. There's multiple ways to deal with this. I chose to tell the user which cards didn't match (even if there's 6 of them) and only deduct one point for a mismatch per flip instead of each mismatch within the faceup cards. That way, the flip description matched up with the point deduction.
+
+It was also fun to do the history slider bar. I wish that I had done it earlier, so that I could use it for testing which descriptions were being output as I worked from 2 card matching to 3 card matching. It's good practice not to necessarily KNOW an API or SDK, but know how to read one.
